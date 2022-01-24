@@ -10,6 +10,43 @@
  */
 class Solution {
     
+//    public static ListNode makeListNode(List<Integer> values) {
+//        if (values.isEmpty()) {
+//            return null;
+//        }
+//        ListNode postNode = new ListNode(values.get(values.size() - 1));
+//        for (int i = values.size() - 2; i >= 0; i--) {
+//            postNode = new ListNode(values.get(i), postNode);
+//        }
+//        return postNode;
+//    }
+    
+//    public static class ListNode {
+//
+//        int val;
+//        ListNode next;
+//
+//        ListNode() {
+//        }
+//
+//        ListNode(int val) {
+//            this.val = val;
+//        }
+//
+//        ListNode(int val, ListNode next) {
+//            this.val = val;
+//            this.next = next;
+//        }
+//
+//        @Override
+//        public String toString() {
+//            if (next != null) {
+//                return val + " -> " + next;
+//            }
+//            return String.valueOf(val);
+//        }
+//    }
+    
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode rootNode = new ListNode(0);
         ListNode cur = rootNode;
