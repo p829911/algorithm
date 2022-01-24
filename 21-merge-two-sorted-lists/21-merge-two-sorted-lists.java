@@ -10,40 +10,33 @@
  */
 class Solution {
     
-    public static ListNode makeListNode(List<Integer> values) {
-        if (values.isEmpty()) {
-            return null;
-        }
-        ListNode postNode = new ListNode(values.get(values.size() - 1));
-        for (int i = values.size() - 2; i >= 0; i--) {
-            postNode = new ListNode(values.get(i), postNode);
-        }
-        return postNode;
-    }
-    
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        List<Integer> sortedArray = new ArrayList<>();
+        ListNode rootNode = new ListNode(0);
+        ListNode cur = rootNode;
 
-        /**
-         * && vs &, || vs | 차이
-         * &는 두 조건을 모두 검사 하는 것이고
-         * &&는 첫번째 조건이 참 일때만 두번째 조건을 검사 하는 것이다.
-         */
         while (list1 != null | list2 != null) {
 
-            if (list1 != null) {
-                sortedArray.add(list1.val);
-                list1 = list1.next;
+            if (list1 == null) {
+                cur.next = list2;
+                break;
             }
 
-            if (list2 != null) {
-                sortedArray.add(list2.val);
+            if (list2 == null) {
+                cur.next = list1;
+                break;
+            }
+
+            if (list1.val < list2.val) {
+                cur.next = new ListNode(list1.val);
+                cur = cur.next;
+                list1 = list1.next;
+            } else {
+                cur.next = new ListNode(list2.val);
+                cur = cur.next;
                 list2 = list2.next;
             }
-
         }
 
-        sortedArray.sort(Integer::compareTo);
-        return makeListNode(sortedArray);
+        return rootNode.next;
     }
 }
