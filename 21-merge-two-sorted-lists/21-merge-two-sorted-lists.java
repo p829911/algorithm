@@ -28,13 +28,14 @@ class Solution {
 
             if (list1.val < list2.val) {
                 cur.next = new ListNode(list1.val);
-                cur = cur.next;
                 list1 = list1.next;
             } else {
                 cur.next = new ListNode(list2.val);
-                cur = cur.next;
                 list2 = list2.next;
             }
+            
+            cur = cur.next;
+            
         }
 
         return rootNode.next;
